@@ -4,8 +4,9 @@ def calculate_average(numbers):
     total = 0.0
     count = 0
     for number in numbers:
-        if not isinstance(number, (int, float)):
-            raise TypeError(f'Invalid element {number}: must be a number.')
-        total += number
-        count += 1
-    return total / count
+        if isinstance(number, (int, float)):
+            total += number
+            count += 1
+        else:
+            raise TypeError(f'Invalid element: {number}. All elements must be numeric.')
+    return total / count if count > 0 else 0.0
